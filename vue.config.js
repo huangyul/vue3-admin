@@ -1,6 +1,8 @@
 // vue 项目配置文件
 // 详细请查看 https://cli.vuejs.org/zh/config/
 
+const path = require('path')
+
 module.exports = {
   // 部署应用包时的基本url
   // 比如要该应用要部署到 www.xxx.com/my-app/ 上，则publicPath需要设置为 /my-app
@@ -14,12 +16,12 @@ module.exports = {
   assetsDir: 'static',
 
   // 生产环境的source map ，默认值 true
-  productionSourceMap: false,
+  // productionSourceMap: false,
 
   // 是否将组件中的css提取到一个独立的css文件中
-  css: {
-    extract: false,
-  },
+  // css: {
+  //   extract: false,
+  // },
 
   // 开发服务器
   // 更多参数可参考 webpack-dev-server https://webpack.docschina.org/configuration/dev-server/
@@ -29,12 +31,27 @@ module.exports = {
     // 是否自动使用浏览器打开
     open: false,
     // 代理（解决跨域问题）
-    proxy: {
-      '/dev-api': {
-        target: '', // 目标服务器
-        pathRewrite: { '^/api': '' }, // 接口重写
-        changeOrigin: true, // 发送请求头中的host会设置成target
-        // ws: true, // 是否要代理websockets
+    // proxy: {
+    //   '/dev-api': {
+    //     target: '', // 目标服务器
+    //     pathRewrite: { '^/api': '' }, // 接口重写
+    //     changeOrigin: true, // 发送请求头中的host会设置成target
+    //     // ws: true, // 是否要代理websockets
+    //   },
+    // },
+  },
+
+  // webpack的配置，会通过webpack-merge合并到最终的配置中
+  configureWebpack: {
+    // 模块解析规则
+    resolve: {
+      // 配置路径别名
+      alias: {
+        '@': path.resolve(__dirname, './src'),
+        '@views': path.resolve(__dirname, './src/views'),
+        '@utils': path.resolve(__dirname, './src/utils'),
+        '@components': path.resolve(__dirname, './src/components'),
+        '@assets': path.resolve(__dirname, './src/assets'),
       },
     },
   },

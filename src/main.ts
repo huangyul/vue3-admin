@@ -3,4 +3,13 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
-createApp(App).use(store).use(router).mount('#app')
+// element
+import ElementPlus from 'element-plus'
+import '@assets/styles/base/index.scss'
+
+const app = createApp(App)
+
+app.use(store)
+app.use(router)
+app.use(ElementPlus)
+app.mount('#app')

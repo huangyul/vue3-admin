@@ -19,9 +19,9 @@ module.exports = {
   // productionSourceMap: false,
 
   // 是否将组件中的css提取到一个独立的css文件中
-  // css: {
-  //   extract: false,
-  // },
+  css: {
+    extract: false,
+  },
 
   // 开发服务器
   // 更多参数可参考 webpack-dev-server https://webpack.docschina.org/configuration/dev-server/

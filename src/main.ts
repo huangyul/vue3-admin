@@ -9,6 +9,10 @@ import '@assets/styles/base/index.scss'
 
 const app = createApp(App)
 
+// 注册图标组件
+import { registerComponent } from './utils/helper'
+registerComponent(app)
+
 app.use(store)
 app.use(router)
 app.use(ElementPlus)

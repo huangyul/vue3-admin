@@ -140,3 +140,36 @@ $--color-danger-light-6: mix($--color-whites, $--color-danger, 60%) !default;
 $--color-danger-light-7: mix($--color-whites, $--color-danger, 70%) !default;
 $--color-danger-light-8: mix($--color-whites, $--color-danger, 80%) !default;
 $--color-danger-light-9: mix($--color-whites, $--color-danger, 90%) !default;
+
+@for $i from 3 to 30 {
+  .mt-#{$i} {
+    margin-top: #{$i}px !important;
+  }
+  .mb-#{$i} {
+    margin-bottom: #{$i}px !important;
+  }
+  .ml-#{$i} {
+    margin-left: #{$i}px !important;
+  }
+  .mr-#{$i} {
+    margin-right: #{$i}px !important;
+  }
+  .pt-#{$i} {
+    padding-top: #{$i}px !important;
+  }
+  .pb-#{$i} {
+    margin-bottom: #{$i}px !important;
+  }
+  .br-#{$i} {
+    margin-bottom: #{$i}px !important;
+  }
+  .bl-#{$i} {
+    margin-left: #{$i}px !important;
+  }
+}
+
+@for $i from 10 to 32 {
+  .font-#{$i} {
+    font-size: #{$i}px !important;
+  }
+}

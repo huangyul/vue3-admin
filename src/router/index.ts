@@ -6,9 +6,9 @@ const router = createRouter({
   routes,
 })
 
-router.beforeEach((to, from, next) => {
-  if (to.name != 'login') next({ name: 'login' })
-  next()
-})
+// router.beforeEach((to, from, next) => {
+//   if (to.name != 'login') next({ name: 'login' })
+//   next()
+// })
 
 export default router

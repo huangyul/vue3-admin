@@ -1,9 +1,21 @@
 <template>
   <div class="layout-container">
     <!-- 侧边导航栏 -->
-    <SiderMenu class="sider-bar"></SiderMenu>
+    <SiderMenu
+      :class="[
+        'sider-bar',
+        {
+          'sider-close': !store.state.system.menuCollapse,
+        },
+      ]"
+    ></SiderMenu>
 
-    <div class="container">
+    <div
+      :class="[
+        'container',
+        { 'container-close': !store.state.system.menuCollapse },
+      ]"
+    >
       <!-- 顶部 -->
       <NavBar class="navbar"></NavBar>
       <!-- 主体内容 -->
@@ -13,8 +25,11 @@
 </template>
 
 <script setup>
+  import { useStore } from 'vuex'
   import NavBar from './components/NavBar.vue'
   import SiderMenu from './components/SiderMenu.vue'
+
+  const store = useStore()
 </script>
 
 <style lang="scss" scoped>
@@ -22,13 +37,12 @@
     width: 100%;
     height: 100%;
     display: flex;
-
-    .sider-bar {
-      width: 210px;
-      height: 100%;
+    .container-close {
+      width: calc(100% - 63px) !important;
     }
-
     .container {
+      -webkit-transition: width 0.28s;
+      transition: width 0.28s;
       width: calc(100% - 210px);
       .navbar {
         width: 100%;

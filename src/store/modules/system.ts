@@ -1,8 +1,8 @@
-export default {
-  namespace: true,
+const systemModule: any = {
+  namespaced: true,
   state: {
     // 侧边菜单是否展开
-    menuCollapse: true,
+    menuCollapse: false,
   },
   mutations: {
     setMenu(state: any, value: boolean) {
@@ -20,3 +20,5 @@ export default {
     },
   },
 }
+
+export default systemModule

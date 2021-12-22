@@ -38,7 +38,7 @@ const watermark = {
   },
   // 删除水印
   del: () => {
-    let id = '1.23452384164.123412416'
+    const id = '1.23452384164.123412416'
     if (document.getElementById(id) !== null)
       document.body.removeChild(document.getElementById(id) as any)
   },

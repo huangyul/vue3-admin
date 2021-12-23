@@ -2,7 +2,7 @@ const systemModule: any = {
   namespaced: true,
   state: {
     // 侧边菜单是否展开
-    menuCollapse: false,
+    menuCollapse: true,
   },
   mutations: {
     setMenu(state: any, value: boolean) {

@@ -19,7 +19,9 @@
       <!-- 顶部 -->
       <NavBar class="navbar"></NavBar>
       <!-- 主体内容 -->
-      <router-view class="content"></router-view>
+      <transition name="page">
+        <router-view class="content"></router-view>
+      </transition>
     </div>
   </div>
 </template>
@@ -49,8 +51,11 @@
         width: 100%;
       }
       .content {
+        padding: 20px 10px;
         width: 100%;
       }
+
+      // .content-
     }
   }
 </style>

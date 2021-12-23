@@ -5,50 +5,48 @@
     class="el-menu-vertical-demo"
     mode="vertical"
     :collapse="!store.state.system.menuCollapse"
-    default-active="1"
+    :default-active="`${routeList[0].path}`"
     text-color="#fff"
+    router
   >
-    <el-menu-item index="1">
+    <el-menu-item
+      :index="`${routeList[0].path}`"
+      @click="onMenuItemClick"
+      :route="`${routeList[0].path}`"
+    >
       <el-icon><elementMenu /></el-icon>
-      <span>Navigator Two</span>
+      <span>Home</span>
     </el-menu-item>
-    <el-sub-menu index="2">
-      <template #title>
-        <el-icon><elementLocation /></el-icon>
-        <span>Navigator One</span>
-      </template>
-      <el-menu-item-group title="Group One">
-        <el-menu-item index="2-1">item one</el-menu-item>
-        <el-menu-item index="2-2">item one</el-menu-item>
-      </el-menu-item-group>
-      <el-menu-item-group title="Group Two">
-        <el-menu-item index="2-3">item three</el-menu-item>
-      </el-menu-item-group>
-      <el-sub-menu index="2-4">
-        <template #title>item four</template>
-        <el-menu-item index="2-4-1">item one</el-menu-item>
-      </el-sub-menu>
-    </el-sub-menu>
-    <el-menu-item index="3" disabled>
-      <el-icon><elementDocument /></el-icon>
-      <span>Navigator Three</span>
-    </el-menu-item>
-    <el-menu-item index="4">
-      <el-icon><elementSetting /></el-icon>
-      <span>Navigator Four</span>
+    <el-menu-item
+      :index="`${routeList[1].path}`"
+      @click="onMenuItemClick"
+      :route="{ path: '/a' }"
+    >
+      <el-icon><elementMenu /></el-icon>
+      <span>About</span>
     </el-menu-item>
   </el-menu>
 </template>
 
 <script setup>
   import { computed } from '@vue/reactivity'
+  import { useRouter } from 'vue-router'
   import { useStore } from 'vuex'
 
   const store = useStore()
 
+  const router = useRouter()
+
+  const routeList = router.options.routes
+  console.log(routeList)
+
   const isCollapse = computed(() => {
     store.state.system.menuCollapse
   })
+
+  const onMenuItemClick = (e) => {
+    console.log(e)
+  }
 </script>
 
 <style lang="scss" scoped>

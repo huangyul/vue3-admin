@@ -1,0 +1,1 @@
+<template>PageC</template>

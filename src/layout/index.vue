@@ -34,7 +34,7 @@
   import { useRoute } from 'vue-router'
   import { useStore } from 'vuex'
   import NavBar from './components/NavBar.vue'
-  import SiderMenu from './components/SiderMenu.vue'
+  import SiderMenu from './components/SiderMenu/SiderMenu.vue'
 
   const store = useStore()
   const route = useRoute()
@@ -54,6 +54,9 @@
     width: 100%;
     height: 100%;
     display: flex;
+    // .sider-menu {
+    //   height: 100%;
+    // }
     .container-close {
       // width: calc(100% - 63px) !important;
     }

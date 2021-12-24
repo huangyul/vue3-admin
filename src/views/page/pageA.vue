@@ -1,0 +1,1 @@
+<template>PageA</template>

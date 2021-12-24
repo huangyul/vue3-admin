@@ -19,9 +19,15 @@
       <!-- 顶部 -->
       <NavBar class="navbar"></NavBar>
       <!-- 主体内容 -->
-      <transition name="page" mode="out-in">
+      <!-- <transition name="page" mode="out-in">
         <router-view :key="key" class="content"></router-view>
-      </transition>
+      </transition> -->
+
+      <router-view class="content" v-slot="{ Component }">
+        <transition name="page" mode="out-in">
+          <component :is="Component" />
+        </transition>
+      </router-view>
     </div>
   </div>
 </template>

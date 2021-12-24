@@ -17,5 +17,6 @@ registerComponent(app)
 
 app.use(store)
 app.use(router)
+// 中文化
 app.use(ElementPlus, { locale: lang })
 app.mount('#app')

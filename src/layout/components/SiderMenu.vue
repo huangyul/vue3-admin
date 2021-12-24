@@ -13,10 +13,6 @@
       <el-icon><elementMenu /></el-icon>
       <span>Home</span>
     </el-menu-item>
-    <el-menu-item :index="`${routeList[1].path}`">
-      <el-icon><elementMenu /></el-icon>
-      <span>About</span>
-    </el-menu-item>
   </el-menu>
 </template>
 
@@ -29,16 +25,9 @@
 
   const router = useRouter()
 
+  // 获取所有路由
   const routeList = router.options.routes
-  console.log(routeList)
-
-  const isCollapse = computed(() => {
-    store.state.system.menuCollapse
-  })
-
-  const onMenuItemClick = (e) => {
-    console.log(e)
-  }
+  const
 </script>
 
 <style lang="scss" scoped>

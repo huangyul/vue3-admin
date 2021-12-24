@@ -1,4 +1,4 @@
-import Home from '../views/Home.vue'
+import Home from '../views/home/Home.vue'
 import { RouteRecordRaw } from 'vue-router'
 import Layout from '@/layout/index.vue'
 
@@ -14,14 +14,11 @@ const routes: Array<RouteRecordRaw> = [
         name: 'home',
         component: Home,
       },
-    ],
-  },
-  {
-    path: '/a',
-    name: 'a',
-    redirect: '/about',
-    component: Layout,
-    children: [
+      {
+        path: '/page',
+        name: 'page',
+        component: () => import('../views/Page.vue'),
+      },
       {
         path: '/about',
         name: 'About',
@@ -29,7 +26,6 @@ const routes: Array<RouteRecordRaw> = [
       },
     ],
   },
-
   {
     path: '/login',
     name: 'login',

@@ -5,6 +5,8 @@ import store from './store'
 
 // element
 import ElementPlus from 'element-plus'
+import lang from 'element-plus/lib/locale/lang/zh-cn'
+
 import '@assets/styles/base/index.scss'
 
 const app = createApp(App)
@@ -15,5 +17,5 @@ registerComponent(app)
 
 app.use(store)
 app.use(router)
-app.use(ElementPlus)
+app.use(ElementPlus, { locale: lang })
 app.mount('#app')

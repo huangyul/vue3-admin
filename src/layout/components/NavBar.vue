@@ -3,8 +3,12 @@
     <div class="left">
       <!-- 侧边菜单缩放 -->
       <div class="expand-icon" @click="onExpand">
-        <el-icon class="expand"><elementFold /></el-icon>
+        <el-icon class="expand"
+          ><elementFold v-if="store.state.system.menuCollapse" /><elementExpand
+            v-else
+        /></el-icon>
       </div>
+      <BreadCrumb></BreadCrumb>
     </div>
 
     <!-- 个人头像 -->
@@ -34,6 +38,7 @@
 </template>
 
 <script setup>
+  import BreadCrumb from './BreadCrumb.vue'
   import { useStore } from 'vuex'
 
   const store = useStore()
@@ -56,6 +61,9 @@
 
     .left {
       height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       .expand-icon {
         width: 50px;
         height: 100%;

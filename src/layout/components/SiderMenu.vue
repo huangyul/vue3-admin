@@ -9,19 +9,11 @@
     text-color="#fff"
     router
   >
-    <el-menu-item
-      :index="`${routeList[0].path}`"
-      @click="onMenuItemClick"
-      :route="`${routeList[0].path}`"
-    >
+    <el-menu-item :index="`${routeList[0].path}`">
       <el-icon><elementMenu /></el-icon>
       <span>Home</span>
     </el-menu-item>
-    <el-menu-item
-      :index="`${routeList[1].path}`"
-      @click="onMenuItemClick"
-      :route="{ path: '/a' }"
-    >
+    <el-menu-item :index="`${routeList[1].path}`">
       <el-icon><elementMenu /></el-icon>
       <span>About</span>
     </el-menu-item>

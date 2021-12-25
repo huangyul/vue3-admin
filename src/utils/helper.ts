@@ -1,5 +1,6 @@
 import type { App } from 'vue'
 import * as elementIcons from '@element-plus/icons-vue'
+import SvgIcon from '@components/svgIcon/index.vue'
 
 /**
  * 全局注册element 图标
@@ -12,4 +13,5 @@ export function registerComponent(app: App) {
   for (const i in icons) {
     app.component(`element${icons[i].name}`, icons[i])
   }
+  app.component('SvgIcon', SvgIcon)
 }

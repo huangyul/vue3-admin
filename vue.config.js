@@ -2,6 +2,7 @@
 // 详细请查看 https://cli.vuejs.org/zh/config/
 
 const path = require('path')
+const { config } = require('process')
 
 module.exports = {
   // 部署应用包时的基本url
@@ -54,5 +55,27 @@ module.exports = {
         '@assets': path.resolve(__dirname, './src/assets'),
       },
     },
+  },
+
+  // 链式配置webpack，config相当于webpack Config导出的对象
+  chainWebpack(config) {
+    // 因为webpack默认使用url-loader处理，所以需要先排除掉
+    config.module
+      .rule('svg')
+      .exclude.add(path.resolve(__dirname, './src/assets/icons'))
+      .end()
+
+    // 新增一个rule，使用svg-sprite-loader来处理
+    config.module
+      .rule('icons') // 定义rule名
+      .test(/\.svg$/)
+      .include.add(path.resolve(__dirname, './src/assets/icons'))
+      .end()
+      .use('svg-sprite-loader')
+      .loader('svg-sprite-loader')
+      .options({
+        symbolId: 'icon-[name]',
+      })
+      .end()
   },
 }

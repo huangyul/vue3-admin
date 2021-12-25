@@ -18,7 +18,10 @@
             v-if="route.children && route.children.length > 1"
           >
             <template #title>
-              <el-icon><elementMenu /></el-icon>
+              <div class="icon">
+                <SvgIcon iconName="eye"></SvgIcon>
+              </div>
+
               <span>{{ route.meta.title }}</span>
             </template>
             <SiderItem :routes="route.children"></SiderItem>
@@ -74,6 +77,11 @@
 
     .el-menu {
       border: 0 !important;
+
+      .icon {
+        display: inline-block;
+        padding-right: 10px;
+      }
     }
     .menu:not(.el-menu--collapse) {
       width: 210px;

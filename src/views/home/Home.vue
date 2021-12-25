@@ -1,8 +1,14 @@
 <template>
-  <span>Total item count</span>
+  <div>
+    <!-- <svg>
+      <use xlink:href="#icon-eye"></use>
+    </svg> -->
+
+    <SvgIcon iconName="eye"></SvgIcon>
+  </div>
 </template>
 
-<script lang="ts"></script>
+<script setup></script>
 
 <style>
   /* .el-menu-vertical-demo:not(.el-menu--collapse) {

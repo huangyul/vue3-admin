@@ -9,6 +9,9 @@ import lang from 'element-plus/lib/locale/lang/zh-cn'
 
 import '@assets/styles/base/index.scss'
 
+// 批量引入svg文件
+import '@/assets/icons'
+
 const app = createApp(App)
 
 // 注册图标组件

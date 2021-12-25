@@ -2,6 +2,14 @@ import Home from '../views/home/Home.vue'
 import { RouteRecordRaw } from 'vue-router'
 import Layout from '@/layout/index.vue'
 
+/**
+ * 路由meta参数说明
+ * meta: {
+ *  title: 标题
+ *  isHide: 菜单是否隐藏
+ * }
+ */
+
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
@@ -68,7 +76,7 @@ const routes: Array<RouteRecordRaw> = [
     path: '/login',
     name: 'login',
     component: () => import('../views/login/Login.vue'),
-    meta: { title: 'login' },
+    meta: { title: 'login', isHide: true },
   },
 ]
 

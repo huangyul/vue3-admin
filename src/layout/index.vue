@@ -30,7 +30,6 @@
 </template>
 
 <script setup>
-  import { ref, watch } from '@vue/runtime-core'
   import { useRoute } from 'vue-router'
   import { useStore } from 'vuex'
   import NavBar from './components/NavBar.vue'
@@ -38,15 +37,6 @@
 
   const store = useStore()
   const route = useRoute()
-  const key = ref('')
-
-  watch(
-    () => route.path,
-    (val) => {
-      key.value = val
-      console.log(key.value)
-    }
-  )
 </script>
 
 <style lang="scss" scoped>

@@ -20,9 +20,9 @@
       <NavBar class="navbar"></NavBar>
       <!-- 主体内容 -->
 
-      <router-view class="content" v-slot="{ Component }">
+      <router-view v-slot="{ Component }">
         <transition name="page" mode="out-in">
-          <component :is="Component" />
+          <component class="content" :is="Component" />
         </transition>
       </router-view>
     </div>
@@ -69,7 +69,7 @@
         width: 100%;
       }
       .content {
-        padding: 20px 10px;
+        padding: 30px 20px;
         width: 100%;
       }
 

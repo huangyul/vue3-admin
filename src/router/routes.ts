@@ -8,44 +8,13 @@ const routes: Array<RouteRecordRaw> = [
     name: '/',
     redirect: '/home',
     component: Layout,
+    meta: { title: 'home' },
     children: [
       {
         path: '/home',
         name: 'home',
         component: Home,
         meta: { title: 'Home' },
-      },
-      {
-        path: '/page',
-        name: 'page',
-        component: () => import('../views/Page.vue'),
-        meta: { title: 'Page' },
-        children: [
-          {
-            path: '/page/a',
-            name: 'a',
-            component: () => import('@views/page/pageA.vue'),
-            meta: { title: 'Pagea' },
-          },
-          {
-            path: '/page/b',
-            name: 'b',
-            component: () => import('@views/page/pageB.vue'),
-            meta: { title: 'Pageb' },
-          },
-          {
-            path: '/page/c',
-            name: 'c',
-            component: () => import('@views/page/pageC.vue'),
-            meta: { title: 'Pagec' },
-          },
-          {
-            path: '/page/d',
-            name: 'd',
-            component: () => import('@views/page/pageD.vue'),
-            meta: { title: 'Paged' },
-          },
-        ],
       },
       {
         path: '/about',
@@ -56,9 +25,50 @@ const routes: Array<RouteRecordRaw> = [
     ],
   },
   {
+    path: '/page',
+    name: 'page',
+    component: Layout,
+    meta: { title: 'Page' },
+    children: [
+      {
+        path: '/page/a',
+        name: 'a',
+        component: () => import('../views/page/pageA.vue'),
+        meta: { title: 'pageA' },
+        children: [
+          {
+            path: '/page/a',
+            name: 'a',
+            component: () => import('../views/page/pageA.vue'),
+            meta: { title: 'pageA' },
+          },
+        ],
+      },
+      {
+        path: '/page/b',
+        name: 'b',
+        component: () => import('../views/page/pageB.vue'),
+        meta: { title: 'pageB' },
+      },
+      {
+        path: '/page/c',
+        name: 'c',
+        component: () => import('../views/page/pageC.vue'),
+        meta: { title: 'pageC' },
+      },
+      {
+        path: '/page/d',
+        name: 'd',
+        component: () => import('../views/page/pageD.vue'),
+        meta: { title: 'pageD' },
+      },
+    ],
+  },
+  {
     path: '/login',
     name: 'login',
-    component: () => import('@views/login/Login.vue'),
+    component: () => import('../views/login/Login.vue'),
+    meta: { title: 'login' },
   },
 ]
 

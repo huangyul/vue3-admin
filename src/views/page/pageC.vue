@@ -1,1 +1,2 @@
-<template>PageC</template>
+<template><div>PageC</div></template>
+<script setup></script>

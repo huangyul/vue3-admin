@@ -1,4 +1,5 @@
 <template>
+  <!-- 123 -->
   <el-scrollbar class="scroll">
     <el-menu
       active-text-color="#ffd04b"
@@ -11,13 +12,23 @@
       router
     >
       <template v-for="route in routeList" :key="route.path">
-        <el-sub-menu v-if="route.children && route.children.length > 0">
+        <el-sub-menu
+          :index="route.path"
+          v-if="route.children && route.children.length > 1"
+        >
           <template #title>
             <el-icon><elementMenu /></el-icon>
             <span>{{ route.meta.title }}</span>
           </template>
           <SiderItem :routes="route.children"></SiderItem>
         </el-sub-menu>
+        <el-menu-item
+          v-else-if="route.children && route.children.length == 1"
+          :index="route.children[0].path"
+        >
+          <el-icon><elementMenu /></el-icon>
+          <span>{{ route.children[0].meta.title }}</span>
+        </el-menu-item>
         <el-menu-item v-else :index="`${route.path}`">
           <el-icon><elementMenu /></el-icon>
           <span>{{ route.meta.title }}</span>
@@ -38,7 +49,8 @@
 
   // 获取所有路由
   // 因为所有页面都使用了layout模板，所以都会在第一个路由的children里面
-  const routeList = router.options.routes[0].children
+  const routeList = router.options.routes
+  console.log(routeList)
   // const
 </script>
 
@@ -51,6 +63,11 @@
 
     &::v-deep .el-scrollbar {
       opacity: 0 !important;
+    }
+
+    &::v-deep .el-menu--collapse {
+      width: 63px;
+      height: 100%;
     }
 
     .el-menu {

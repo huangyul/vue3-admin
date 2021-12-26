@@ -19,7 +19,9 @@
           >
             <template #title>
               <div class="icon">
-                <SvgIcon iconName="eye"></SvgIcon>
+                <SvgIcon
+                  :iconName="route.meta.icon ? route.meta.icon : 'eye'"
+                ></SvgIcon>
               </div>
 
               <span>{{ route.meta.title }}</span>

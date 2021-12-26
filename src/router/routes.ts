@@ -16,7 +16,7 @@ const routes: Array<RouteRecordRaw> = [
     name: '/',
     redirect: '/home',
     component: Layout,
-    meta: { title: 'home' },
+    meta: { title: 'home', icon: 'dashboard' },
     children: [
       {
         path: '/home',

@@ -18,7 +18,16 @@
             v-if="route.children && route.children.length > 1"
           >
             <template #title>
+<<<<<<< HEAD
               <SvgIcon :iconName="route.meta.icon || 'eye'"></SvgIcon>
+=======
+              <div class="icon">
+                <SvgIcon
+                  :iconName="route.meta.icon ? route.meta.icon : 'eye'"
+                ></SvgIcon>
+              </div>
+
+>>>>>>> 0f93c0d3453a395f548306d68576d8f08f8f9ae4
               <span>{{ route.meta.title }}</span>
             </template>
             <SiderItem :routes="route.children"></SiderItem>

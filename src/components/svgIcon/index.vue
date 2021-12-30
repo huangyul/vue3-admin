@@ -29,8 +29,15 @@
 
 <style lang="scss" scoped>
   .svg-icon {
+<<<<<<< HEAD
     width: 14px;
     height: 14px;
+=======
+    width: 1.2em;
+    height: 1.2em;
+    vertical-align: -0.23em;
+    fill: currentColor;
+>>>>>>> 0f93c0d3453a395f548306d68576d8f08f8f9ae4
     overflow: hidden;
     // vertical-align: center;
     fill: currentColor;

@@ -19,7 +19,7 @@
     },
   })
 
-  const type = ref('')
+  // const type = ref('')
   if (props.iconName.includes('element')) {
   } else {
   }

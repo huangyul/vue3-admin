@@ -19,26 +19,16 @@
     },
   })
 
-  // const type = ref('')
-  if (props.iconName.includes('element')) {
-  } else {
-  }
-  // const svgName = props.iconName.includes('element') ? `#icon-${props.iconName}`
+  const svgName = `#icon-${props.iconName}`
   const svgClass = props.iconClass ? `svg-icon ${props.iconClass}` : 'svg-icon'
 </script>
 
 <style lang="scss" scoped>
   .svg-icon {
-    width: 14px;
-    height: 14px;
-    overflow: hidden;
-    // vertical-align: center;
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.15em;
     fill: currentColor;
-    display: block;
-    // width: 1.2em;
-    // height: 1.2em;
-    // vertical-align: -0.15em;
-    // fill: currentColor;
-    // overflow: hidden;
+    overflow: hidden;
   }
 </style>

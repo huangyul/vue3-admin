@@ -1,6 +1,6 @@
 <template>
   <el-scrollbar class="scroll">
-    <!-- <el-menu
+    <el-menu
       active-text-color="#ffd04b"
       background-color="#545c64"
       class="el-menu-vertical-demo"
@@ -10,19 +10,23 @@
       text-color="#fff"
       router
     >
-      <template v-for="route in routeList" :key="route.path"> -->
-    <!-- 如果设置了ishide：true，则不显示该路由 -->
-    <!-- <div v-if="!route.meta.isHide">
+      <template v-for="route in routeList" :key="route.path">
+        <!-- 如果设置了ishide：true，则不显示该路由 -->
+        <template v-if="!route.meta.isHide">
           <el-sub-menu
             :index="route.path"
             v-if="route.children && route.children.length > 1"
           >
             <template #title>
-              <SvgIcon :iconName="route.meta.icon || 'eye'"></SvgIcon>
+              <SvgIcon
+                :iconName="route.meta.icon || 'eye'"
+                iconClass="menu-icon"
+              ></SvgIcon>
               <span>{{ route.meta.title }}</span>
             </template>
             <SiderItem :routes="route.children"></SiderItem>
           </el-sub-menu>
+          <!-- 如果只有一个子路由，则该子路由作为第一级路由 -->
           <el-menu-item
             v-else-if="route.children && route.children.length == 1"
             :index="route.children[0].path"
@@ -34,47 +38,8 @@
             <el-icon><elementMenu /></el-icon>
             <span>{{ route.meta.title }}</span>
           </el-menu-item>
-        </div>
-      </template>
-    </el-menu> -->
-    <el-menu
-      default-active="2"
-      background-color="#545c64"
-      class="el-menu-vertical-demo"
-      :collapse="!store.state.system.menuCollapse"
-    >
-      <el-sub-menu index="1">
-        <template #title>
-          <SvgIcon iconName="eye"></SvgIcon>
-          <span>Navigator One</span>
         </template>
-        <el-menu-item-group>
-          <template #title><span>Group One</span></template>
-          <el-menu-item index="1-1">item one</el-menu-item>
-          <el-menu-item index="1-2">item two</el-menu-item>
-        </el-menu-item-group>
-        <el-menu-item-group title="Group Two">
-          <el-menu-item index="1-3">item three</el-menu-item>
-        </el-menu-item-group>
-        <el-sub-menu index="1-4">
-          <template #title><span>item four</span></template>
-          <el-menu-item index="1-4-1">item one</el-menu-item>
-        </el-sub-menu>
-      </el-sub-menu>
-      <el-menu-item index="2">
-        <SvgIcon iconName="eye"></SvgIcon>
-        <template #title>Navigator Two</template>
-      </el-menu-item>
-      <el-menu-item index="3" disabled>
-        <SvgIcon iconName="eye"></SvgIcon>
-
-        <template #title>Navigator Three</template>
-      </el-menu-item>
-      <el-menu-item index="4">
-        <SvgIcon iconName="eye"></SvgIcon>
-
-        <template #title>Navigator Four</template>
-      </el-menu-item>
+      </template>
     </el-menu>
   </el-scrollbar>
 </template>
@@ -87,6 +52,10 @@
   const store = useStore()
 
   const router = useRouter()
+
+  const menuIcon = {
+    'margin-right': '5px',
+  }
 
   // 获取所有路由
   // 因为所有页面都使用了layout模板，所以都会在第一个路由的children里面

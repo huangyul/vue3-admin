@@ -8,6 +8,7 @@ import Layout from '@/layout/index.vue'
  *  title: 标题
  *  isHide: 菜单是否隐藏
  * }
+ * 测试
  */
 
 const routes: Array<RouteRecordRaw> = [

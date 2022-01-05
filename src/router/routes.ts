@@ -37,6 +37,7 @@ const routes: Array<RouteRecordRaw> = [
     path: '/page',
     name: 'page',
     component: Layout,
+    redirect: '/page/a',
     meta: { title: 'Page' },
     children: [
       {
@@ -44,9 +45,10 @@ const routes: Array<RouteRecordRaw> = [
         name: 'a',
         component: () => import('../views/page/pageA.vue'),
         meta: { title: 'pageA' },
+        redirect: '/page/a/a',
         children: [
           {
-            path: '/page/a',
+            path: '/page/a/a',
             name: 'a',
             component: () => import('../views/page/pageA.vue'),
             meta: { title: 'pageA' },
@@ -64,12 +66,6 @@ const routes: Array<RouteRecordRaw> = [
         name: 'c',
         component: () => import('../views/page/pageC.vue'),
         meta: { title: 'pageC' },
-      },
-      {
-        path: '/page/d',
-        name: 'd',
-        component: () => import('../views/page/pageD.vue'),
-        meta: { title: 'pageD' },
       },
     ],
   },

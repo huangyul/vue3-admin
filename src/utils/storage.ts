@@ -21,10 +21,10 @@ export const Local = {
  */
 export const Session = {
   set(key: string, val: any) {
-    sessionStorage.setItem(key, val)
+    sessionStorage.setItem(key, JSON.stringify(val))
   },
   get(key: string) {
-    return sessionStorage.getItem(key)
+    return JSON.parse(sessionStorage.getItem(key))
   },
   remove(key: string) {
     sessionStorage.removeItem(key)

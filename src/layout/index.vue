@@ -48,13 +48,13 @@
     //   height: 100%;
     // }
     .container-close {
-      // width: calc(100% - 63px) !important;
+      width: calc(100% - 63px) !important;
     }
     .container {
       -webkit-transition: width 0.28s;
       transition: width 0.28s;
       flex: 1;
-      // width: calc(100% - 210px);
+      width: calc(100% - 210px);
       .navbar {
         width: 100%;
       }

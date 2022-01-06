@@ -1,3 +1,4 @@
+import { addTag } from '@/utils/tagsview'
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
 import routes from './routes'
 
@@ -7,7 +8,8 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  console.log(to.path)
+  // 将路由添加到tagsview中，如果是主页，则不需要添加
+  addTag(to)
   next()
 })
 

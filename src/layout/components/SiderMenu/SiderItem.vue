@@ -23,5 +23,4 @@
   const props = defineProps({
     routes: Object,
   })
-  console.log(props.routes)
 </script>

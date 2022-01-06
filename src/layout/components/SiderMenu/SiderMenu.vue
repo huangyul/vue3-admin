@@ -6,7 +6,7 @@
       class="el-menu-vertical-demo"
       mode="vertical"
       :collapse="!store.state.system.menuCollapse"
-      :default-active="`${routeList[0].path}`"
+      :default-active="defalutActive"
       text-color="#fff"
       router
     >
@@ -45,7 +45,8 @@
 </template>
 
 <script setup>
-  import { useRouter } from 'vue-router'
+  import { onMounted, ref, watch } from '@vue/runtime-core'
+  import { useRoute, useRouter } from 'vue-router'
   import { useStore } from 'vuex'
   import SiderItem from './SiderItem.vue'
 
@@ -53,14 +54,29 @@
 
   const router = useRouter()
 
-  const menuIcon = {
-    'margin-right': '5px',
-  }
+  const route = useRoute()
+
+  // 菜单默认值
+  let defalutActive = ref('')
 
   // 获取所有路由
   // 因为所有页面都使用了layout模板，所以都会在第一个路由的children里面
   const routeList = router.options.routes
-  console.log(routeList)
+
+  // 第一次加载时，菜单默认是第一个
+  onMounted(() => {
+    defalutActive.value = routeList[0].path
+  })
+
+  // 监听当前路由变化，更新菜单的默认值
+  watch(
+    () => route,
+    (val) => {
+      defalutActive.value = val.path
+    },
+    { deep: true }
+  )
+
   // const
 </script>
 

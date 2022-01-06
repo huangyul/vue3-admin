@@ -2,6 +2,7 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import mitt from 'mitt'
 
 // element
 import ElementPlus from 'element-plus'
@@ -23,3 +24,6 @@ app.use(router)
 // 中文化
 app.use(ElementPlus, { locale: lang })
 app.mount('#app')
+
+// 添加事件总线
+app.config.globalProperties.mittBus = mitt()

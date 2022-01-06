@@ -7,11 +7,12 @@
           v-for="(i, k) in tags"
           :key="k"
           @click="navigator(i.path)"
+          @contextmenu.prevent="onContextmenu"
           :class="{ active: isActive(i.path) }"
         >
           <div>{{ i.meta.title }}</div>
           <div v-if="i.path != '/home' && isActive(i.path)">
-            <el-icon class="icon2" @click.stop="close(i.path)">
+            <el-icon class="icon-close" @click.stop="close(i.path)">
               <elementClose></elementClose>
             </el-icon>
           </div>
@@ -68,6 +69,11 @@
     console.log(tags.value[tags.value.length - 1].path)
     router.push(tags.value[tags.value.length - 1].path)
   }
+
+  // 自定义鼠标右键事件
+  function onContextmenu() {
+    console.log(123123)
+  }
 </script>
 
 <style lang="scss" scoped>
@@ -93,7 +99,7 @@
           cursor: pointer;
         }
 
-        .icon2 {
+        .icon-close {
           margin-left: 8px;
           display: block;
           &:hover {

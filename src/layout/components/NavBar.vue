@@ -14,26 +14,8 @@
 
       <!-- 个人头像 -->
       <div class="right">
-        <el-dropdown class="dropdown">
-          <span class="el-dropdown-link">
-            <el-avatar
-              size="large"
-              src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fup.enterdesk.com%2Fedpic%2F6a%2F67%2F94%2F6a6794c824b4e53320f6abe9da88980f.png&refer=http%3A%2F%2Fup.enterdesk.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1642831062&t=35742ed0feb0bde3942a75ee444bf6e9"
-            ></el-avatar>
-            <el-icon class="el-icon--right">
-              <elementArrowDown />
-            </el-icon>
-          </span>
-          <template #dropdown>
-            <el-dropdown-menu>
-              <el-dropdown-item>Action 1</el-dropdown-item>
-              <el-dropdown-item>Action 2</el-dropdown-item>
-              <el-dropdown-item>Action 3</el-dropdown-item>
-              <el-dropdown-item disabled>Action 4</el-dropdown-item>
-              <el-dropdown-item divided>Action 5</el-dropdown-item>
-            </el-dropdown-menu>
-          </template>
-        </el-dropdown>
+        <Setting class="setting"></Setting>
+        <MyAvater></MyAvater>
       </div>
     </div>
     <div class="bottom">
@@ -45,6 +27,8 @@
 <script setup>
   import BreadCrumb from './BreadCrumb/BreadCrumb.vue'
   import TagsView from './TagsView/index.vue'
+  import MyAvater from './Avater.vue'
+  import Setting from './Setting.vue'
   import { useStore } from 'vuex'
 
   const store = useStore()
@@ -91,8 +75,12 @@
 
       .right {
         padding-right: 20px;
-        .dropdown {
-          cursor: pointer;
+        display: flex;
+        align-items: center;
+        height: 100%;
+
+        .setting {
+          margin-right: 10px;
         }
       }
     }

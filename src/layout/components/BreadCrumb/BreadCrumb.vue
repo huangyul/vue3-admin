@@ -14,7 +14,7 @@
 
 <script setup>
   import { ref } from '@vue/reactivity'
-  import { watch } from '@vue/runtime-core'
+  import { onMounted, watch } from '@vue/runtime-core'
   import { useRoute, useRouter } from 'vue-router'
 
   const route = useRoute()
@@ -31,6 +31,10 @@
     // 通过route.matched获取当前路由的所有记录，包括嵌套路由
     data.value = matched.filter((route) => route.meta && route.meta.title)
   }
+
+  onMounted(() => {
+    getBreadCrumbData(route)
+  })
 
   watch(
     () => route,

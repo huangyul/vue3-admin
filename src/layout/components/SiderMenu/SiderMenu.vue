@@ -65,7 +65,7 @@
 
   // 第一次加载时，菜单默认是第一个
   onMounted(() => {
-    defalutActive.value = routeList[0].path
+    defalutActive.value = route.path
   })
 
   // 监听当前路由变化，更新菜单的默认值

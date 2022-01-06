@@ -1,5 +1,5 @@
 <template>
-  <el-breadcrumb class="app-breadcrumb" separator="/">
+  <el-breadcrumb separator="/">
     <el-breadcrumb-item :to="{ path: '/home' }">homepage</el-breadcrumb-item>
     <transition-group name="breadcrumb">
       <el-breadcrumb-item
@@ -45,4 +45,19 @@
   )
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+  .breadcrumb-item-active {
+    color: #303133;
+    font-weight: bold;
+    text-decoration: none;
+    &:hover {
+      color: cornflowerblue;
+    }
+  }
+  .breadcrumb-item-d {
+    display: inline-block;
+    font-weight: bold;
+    color: #c0c4cc;
+    margin: 0 9px;
+  }
+</style>

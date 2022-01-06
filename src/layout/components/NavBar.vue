@@ -38,7 +38,7 @@
 </template>
 
 <script setup>
-  import BreadCrumb from './BreadCrumb.vue'
+  import BreadCrumb from './BreadCrumb/BreadCrumb.vue'
   import { useStore } from 'vuex'
 
   const store = useStore()

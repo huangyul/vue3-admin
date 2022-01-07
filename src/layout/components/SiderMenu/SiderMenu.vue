@@ -53,6 +53,7 @@
   const store = useStore()
 
   const router = useRouter()
+  console.log(router.options.routes)
 
   const route = useRoute()
 

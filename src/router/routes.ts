@@ -9,6 +9,25 @@ import Layout from '@/layout/index.vue'
 
 export const routes: Array<RouteRecordRaw> = [
   {
+    path: '/login',
+    name: 'login',
+    component: () => import('../views/login/Login.vue'),
+    meta: { title: 'login', isHide: true },
+  },
+]
+
+/**
+ * 根据权限动态加入的路由
+ * 路由meta参数说明
+ * meta: {
+ *  title: 标题
+ *  isHide: 菜单是否隐藏
+ *  icon: 图标
+ *  roles: 权限
+ * }
+ */
+export const dynamicRoutes: Array<RouteRecordRaw> = [
+  {
     path: '/',
     name: '/',
     redirect: '/home',
@@ -29,25 +48,6 @@ export const routes: Array<RouteRecordRaw> = [
       },
     ],
   },
-  {
-    path: '/login',
-    name: 'login',
-    component: () => import('../views/login/Login.vue'),
-    meta: { title: 'login', isHide: true },
-  },
-]
-
-/**
- * 根据权限动态加入的路由
- * 路由meta参数说明
- * meta: {
- *  title: 标题
- *  isHide: 菜单是否隐藏
- *  icon: 图标
- *  roles: 权限
- * }
- */
-export const dynamicRoutes: Array<RouteRecordRaw> = [
   {
     path: '/a',
     name: 'aabout',

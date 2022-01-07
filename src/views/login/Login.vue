@@ -40,6 +40,8 @@
 <script setup lang="ts">
   import { ref } from 'vue'
   import { ElForm, ElMessage } from 'element-plus'
+  import myLogin from '@/utils/login'
+  import { useRouter } from 'vue-router'
   // 表格数据
   const formData = ref({
     username: '',
@@ -48,6 +50,8 @@
 
   // 获取表单组件
   const form = ref<InstanceType<typeof ElForm>>()
+
+  const router = useRouter()
 
   // // 自定义校验器
   // const checkPwd = (rule: any, value: any, callback: any) => {
@@ -73,6 +77,8 @@
         })
       } else {
         // 模拟登陆
+        myLogin(formData.value.username)
+        router.push('/')
       }
     })
   }

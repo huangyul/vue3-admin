@@ -66,13 +66,12 @@
     // 重新获取数据
     tags.value = Session.get('tagsview')
     // 路由跳转到最后一个标签页上
-    console.log(tags.value[tags.value.length - 1].path)
     router.push(tags.value[tags.value.length - 1].path)
   }
 
   // 自定义鼠标右键事件
   function onContextmenu() {
-    console.log(123123)
+    console.log(21123)
   }
 </script>
 

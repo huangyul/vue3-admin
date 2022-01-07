@@ -1,6 +1,8 @@
 <template>
-  <h1>About</h1>
-  <p>{{ store.state.test.count }}</p>
+  <div>
+    <h1>About</h1>
+    <p>{{ store.state.test.count }}</p>
+  </div>
 </template>
 
 <script setup>

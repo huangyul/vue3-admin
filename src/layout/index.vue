@@ -20,9 +20,9 @@
       <NavBar class="navbar"></NavBar>
       <!-- 主体内容 -->
 
-      <router-view v-slot="{ Component }">
+      <router-view class="content" v-slot="{ Component }">
         <transition name="page" mode="out-in">
-          <component class="content" :is="Component" />
+          <component :is="Component" />
         </transition>
       </router-view>
     </div>

@@ -3,15 +3,11 @@ import { RouteRecordRaw } from 'vue-router'
 import Layout from '@/layout/index.vue'
 
 /**
- * 路由meta参数说明
- * meta: {
- *  title: 标题
- *  isHide: 菜单是否隐藏
- * }
+
  * 测试
  */
 
-const routes: Array<RouteRecordRaw> = [
+export const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
     name: '/',
@@ -34,42 +30,6 @@ const routes: Array<RouteRecordRaw> = [
     ],
   },
   {
-    path: '/page',
-    name: 'page',
-    component: Layout,
-    redirect: '/page/a',
-    meta: { title: 'Page' },
-    children: [
-      {
-        path: '/page/a',
-        name: 'a',
-        component: () => import('../views/page/pageA.vue'),
-        meta: { title: 'pageA' },
-        redirect: '/page/a/a',
-        children: [
-          {
-            path: '/page/a/a',
-            name: 'a',
-            component: () => import('../views/page/pageA.vue'),
-            meta: { title: 'pageA' },
-          },
-        ],
-      },
-      {
-        path: '/page/b',
-        name: 'b',
-        component: () => import('../views/page/pageB.vue'),
-        meta: { title: 'pageB' },
-      },
-      {
-        path: '/page/c',
-        name: 'c',
-        component: () => import('../views/page/pageC.vue'),
-        meta: { title: 'pageC' },
-      },
-    ],
-  },
-  {
     path: '/login',
     name: 'login',
     component: () => import('../views/login/Login.vue'),
@@ -77,4 +37,57 @@ const routes: Array<RouteRecordRaw> = [
   },
 ]
 
-export default routes
+/**
+ * 根据权限动态加入的路由
+ * 路由meta参数说明
+ * meta: {
+ *  title: 标题
+ *  isHide: 菜单是否隐藏
+ *  icon: 图标
+ *  roles: 权限
+ * }
+ */
+export const dynamicRoutes: Array<RouteRecordRaw> = [
+  {
+    path: '/a',
+    name: 'aabout',
+    component: Layout,
+    redirect: '/a/about',
+    meta: { icon: 'eye', title: 'about' },
+    children: [
+      {
+        path: '/a/about',
+        name: 'about',
+        component: () => import('../views/About.vue'),
+        meta: { roles: ['admin', 'visitor'] },
+      },
+    ],
+  },
+  {
+    path: '/page',
+    name: 'page',
+    component: Layout,
+    redirect: '/page/a',
+    meta: { title: 'Page', icon: 'eye' },
+    children: [
+      {
+        path: '/page/a',
+        name: 'a',
+        component: () => import('../views/page/pageA.vue'),
+        meta: { title: 'pageA', roles: ['admin', 'visitor'] },
+      },
+      {
+        path: '/page/b',
+        name: 'b',
+        component: () => import('../views/page/pageB.vue'),
+        meta: { title: 'pageB', roles: ['admin'] },
+      },
+      {
+        path: '/page/c',
+        name: 'c',
+        component: () => import('../views/page/pageC.vue'),
+        meta: { title: 'pageC', roles: ['admin'] },
+      },
+    ],
+  },
+]

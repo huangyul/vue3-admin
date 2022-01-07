@@ -3,7 +3,7 @@
     <div class="login-container">
       <div class="login-title">vue3-admin</div>
       <div class="login-form">
-        <el-form :model="formData" :rules="rules">
+        <el-form :model="formData" :rules="rules" ref="form">
           <el-form-item prop="username">
             <el-input v-model="formData.username" placeholder="用户名或账号">
               <template #prefix>
@@ -27,7 +27,9 @@
             </el-input>
           </el-form-item>
           <el-form-item>
-            <el-button type="primary" round class="login-btn">登陆</el-button>
+            <el-button type="primary" round class="login-btn" @click="login"
+              >登陆</el-button
+            >
           </el-form-item>
         </el-form>
       </div>
@@ -35,18 +37,44 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
   import { ref } from 'vue'
+  import { ElForm, ElMessage } from 'element-plus'
+  // 表格数据
   const formData = ref({
     username: '',
     passwrod: '',
   })
 
+  // 获取表单组件
+  const form = ref<InstanceType<typeof ElForm>>()
+
+  // // 自定义校验器
+  // const checkPwd = (rule: any, value: any, callback: any) => {
+  //   if(value)
+  // }
+
+  // 校验规则
   const rules = {
     username: [
       { required: true, message: '请输入用户名或账号', trigger: 'blur' },
     ],
     password: [{ required: true, message: '请输入密码', trigger: 'blur' }],
+  }
+
+  // 登陆
+  const login = () => {
+    // 数据校验要通过
+    form.value.validate((valid) => {
+      if (!valid) {
+        ElMessage({
+          message: '请按规则填入账号密码',
+          type: 'error',
+        })
+      } else {
+        // 模拟登陆
+      }
+    })
   }
 </script>
 

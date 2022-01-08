@@ -3,15 +3,25 @@ import { Local, Session } from '@/utils/storage'
 import { addTag } from '@/utils/tagsview'
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
 import { dynamicRoutes, routes } from './routes'
+import Nprogress from 'nprogress'
+import 'nprogress/nprogress.css'
 
 const router = createRouter({
   history: createWebHashHistory(),
   routes,
 })
 
+// 进度条配置
+Nprogress.configure({
+  showSpinner: false, // 是否显示圈圈
+})
+
 router.beforeEach((to, from, next) => {
   // 将路由添加到tagsview中，如果是主页，则不需要添加
   // addTag(to)
+  // 开启进度条
+  Nprogress.start()
+
   // 判断是否有token
   if (!Session.get('token')) {
     // 没有token的情况下，清空所有缓存
@@ -34,10 +44,13 @@ router.beforeEach((to, from, next) => {
       addDynamicRoute()
       next({ ...to, replace: true })
     } else {
-      console.log(router.options.routes)
       next()
     }
   }
+})
+
+router.afterEach(() => {
+  Nprogress.done()
 })
 
 /**

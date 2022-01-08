@@ -17,8 +17,6 @@ Nprogress.configure({
 })
 
 router.beforeEach((to, from, next) => {
-  // 将路由添加到tagsview中，如果是主页，则不需要添加
-  // addTag(to)
   // 开启进度条
   Nprogress.start()
 
@@ -44,6 +42,8 @@ router.beforeEach((to, from, next) => {
       addDynamicRoute()
       next({ ...to, replace: true })
     } else {
+      // 将路由添加到tagsview中，如果是主页，则不需要添加
+      addTag(to)
       next()
     }
   }

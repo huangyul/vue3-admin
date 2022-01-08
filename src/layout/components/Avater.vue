@@ -22,12 +22,16 @@
 </template>
 
 <script setup lang="ts">
+  import { resetRoute } from '@/router'
   import { Local, Session } from '@/utils/storage'
   import { useRouter } from 'vue-router'
+  import { useStore } from 'vuex'
 
   const router = useRouter()
-
+  const store = useStore()
   const logout = () => {
+    resetRoute()
+    store.commit('userInfos/resetState')
     Session.clear()
     Local.clear()
     router.replace('/login')

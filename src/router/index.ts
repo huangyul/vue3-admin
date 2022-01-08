@@ -104,11 +104,12 @@ function hasPermission(roles: Array<string>, route: RouteRecordRaw): boolean {
  * @param routes
  */
 function addDynamicRoute() {
-  generateRoute().forEach((route) => {
+  const routes: Array<RouteRecordRaw> = generateRoute()
+  routes.forEach((route) => {
     router.addRoute(route)
   })
   // 将路由表保存到vuex中
-  store.commit('system/setRouteList', [...router.options.routes, ...routes])
+  store.commit('userInfos/setRouteList', [...router.options.routes, ...routes])
 }
 
 /**

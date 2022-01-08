@@ -29,7 +29,11 @@ const userModule: Module<userInfoInterface, RooteStateTypes> = {
     setRouteList(state: any, value: boolean) {
       state.routeList = value
     },
-    resetState(state) {},
+    resetState(state) {
+      state.userInfos = {}
+      state.menuCollapse = true
+      state.routeList = []
+    },
   },
   actions: {
     setMenu({ commit }, value: boolean) {

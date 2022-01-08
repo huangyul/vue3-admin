@@ -5,8 +5,8 @@
         <!-- 侧边菜单缩放 -->
         <div class="expand-icon" @click="onExpand">
           <el-icon class="expand"
-            ><elementFold v-if="store.state.user.menuCollapse" /><elementExpand
-              v-else
+            ><elementFold
+              v-if="store.state.userInfos.menuCollapse" /><elementExpand v-else
           /></el-icon>
         </div>
         <BreadCrumb></BreadCrumb>
@@ -34,7 +34,7 @@
   const store = useStore()
 
   const onExpand = () => {
-    store.state.user.menuCollapse = !store.state.user.menuCollapse
+    store.state.userInfos.menuCollapse = !store.state.userInfos.menuCollapse
   }
 </script>
 

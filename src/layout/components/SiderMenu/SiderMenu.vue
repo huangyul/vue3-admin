@@ -5,7 +5,7 @@
       background-color="#545c64"
       class="el-menu-vertical-demo"
       mode="vertical"
-      :collapse="!store.state.user.menuCollapse"
+      :collapse="!store.state.userInfos.menuCollapse"
       :default-active="defalutActive"
       text-color="#fff"
       router
@@ -60,7 +60,7 @@
   // 获取所有路由
   // 因为所有页面都使用了layout模板，所以都会在第一个路由的children里面
   const routeList = computed(() => {
-    return store.state.user.routeList
+    return store.state.userInfos.routeList
   })
   // 第一次加载时，菜单默认是第一个
   onMounted(() => {

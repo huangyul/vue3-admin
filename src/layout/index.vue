@@ -5,7 +5,7 @@
       :class="[
         'sider-bar',
         {
-          'sider-close': !store.state.user.menuCollapse,
+          'sider-close': !store.state.userInfos.menuCollapse,
         },
       ]"
     ></SiderMenu>
@@ -13,7 +13,7 @@
     <div
       :class="[
         'container',
-        { 'container-close': !store.state.user.menuCollapse },
+        { 'container-close': !store.state.userInfos.menuCollapse },
       ]"
     >
       <!-- 顶部 -->

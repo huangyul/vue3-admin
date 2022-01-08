@@ -73,24 +73,36 @@ function comparePermission(
 ): Array<RouteRecordRaw> {
   const asyncRoute: Array<RouteRecordRaw> = []
   routes.forEach((route) => {
-    asyncRoute.push(judgmentRoute(route, roles))
+    // 如果一级路由没有子路由，则不需要添加，因为一级路由是layout
+    const permissionRoutes = judgmentRoute(route, roles)
+    if (permissionRoutes.children && permissionRoutes.children.length > 0) {
+      asyncRoute.push(judgmentRoute(route, roles))
+    }
   })
   return asyncRoute
 }
 
+/**
+ * 通过权限判断路由是否满足权限
+ * @param route
+ * @param roles
+ * @returns
+ */
 function judgmentRoute(route: RouteRecordRaw, roles: Array<string>) {
   const routes: RouteRecordRaw = {
     ...route,
   }
-  // debugger
   routes.children = []
   route.children.forEach((r) => {
+    // 如果有子路由，自递归本身
     if (r.children && r.children.length > 0) {
       r.children = judgmentRoute(r, roles).children
     }
+    // 如果不需要权限的路由，则直接加入
     if (!r.meta.roles) {
       routes.children.push(r)
     } else {
+      // 有权限才加入
       if (hasPermission(roles, r)) {
         routes.children.push(r)
       }

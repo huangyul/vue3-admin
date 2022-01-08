@@ -18,6 +18,7 @@
               show-password
               v-model="formData.password"
               placeholder="密码"
+              @keydown.enter="login"
             >
               <template #prefix>
                 <el-icon class="el-input__icon">

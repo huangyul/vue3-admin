@@ -53,13 +53,13 @@ export const dynamicRoutes: Array<RouteRecordRaw> = [
     name: 'aabout',
     component: Layout,
     redirect: '/a/about',
-    meta: { icon: 'eye', title: 'about' },
+    meta: { icon: 'dashboard', title: 'about' },
     children: [
       {
         path: '/a/about',
         name: 'about',
         component: () => import('../views/About.vue'),
-        meta: { title: 'about', roles: ['admin', 'visitor'] },
+        meta: { title: 'about', roles: ['admin'] },
       },
     ],
   },

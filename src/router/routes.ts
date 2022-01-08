@@ -59,7 +59,7 @@ export const dynamicRoutes: Array<RouteRecordRaw> = [
         path: '/a/about',
         name: 'about',
         component: () => import('../views/About.vue'),
-        meta: { roles: ['admin', 'visitor'] },
+        meta: { title: 'about', roles: ['admin', 'visitor'] },
       },
     ],
   },

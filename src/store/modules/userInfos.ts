@@ -6,6 +6,10 @@ const userModule: Module<userInfoInterface, RooteStateTypes> = {
   namespaced: true,
   state: {
     userInfos: {},
+    // 侧边菜单是否展开
+    menuCollapse: true,
+    // 路由
+    routeList: [],
   },
   mutations: {
     setUserInfo(state, value) {
@@ -19,8 +23,19 @@ const userModule: Module<userInfoInterface, RooteStateTypes> = {
         roles: Array.of(username),
       }
     },
+    setMenu(state: any, value: boolean) {
+      state.menuCollapse = value
+    },
+    setRouteList(state: any, value: boolean) {
+      state.routeList = value
+    },
+    resetState(state) {},
   },
-  actions: {},
+  actions: {
+    setMenu({ commit }, value: boolean) {
+      commit('setMenu', value)
+    },
+  },
   getters: {},
 }
 

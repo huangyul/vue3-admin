@@ -5,7 +5,7 @@
       background-color="#545c64"
       class="el-menu-vertical-demo"
       mode="vertical"
-      :collapse="!store.state.system.menuCollapse"
+      :collapse="!store.state.user.menuCollapse"
       :default-active="defalutActive"
       text-color="#fff"
       router
@@ -45,16 +45,13 @@
 </template>
 
 <script setup>
-  import { onMounted, ref, watch } from '@vue/runtime-core'
+  import { computed, onMounted, ref, watch } from '@vue/runtime-core'
   import { useRoute, useRouter } from 'vue-router'
   import { useStore } from 'vuex'
   import SiderItem from './SiderItem.vue'
 
   const store = useStore()
-
   const router = useRouter()
-  console.log(router.options.routes)
-
   const route = useRoute()
 
   // 菜单默认值
@@ -62,8 +59,9 @@
 
   // 获取所有路由
   // 因为所有页面都使用了layout模板，所以都会在第一个路由的children里面
-  const routeList = router.options.routes
-
+  const routeList = computed(() => {
+    return store.state.user.routeList
+  })
   // 第一次加载时，菜单默认是第一个
   onMounted(() => {
     defalutActive.value = route.path

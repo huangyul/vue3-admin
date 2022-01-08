@@ -30,9 +30,9 @@ router.beforeEach((to, from, next) => {
     if (!userInfo.roles) {
       // 如果没有用户信息，重新获取一次用户信息
       store.commit('userInfos/getUserInfo')
-      // 重新设置路由
-      generateRoute()
-      next(to.path)
+      // 添加动态路由
+      addDynamicRoute()
+      next({ ...to, replace: true })
     } else {
       console.log(router.options.routes)
       next()
@@ -43,10 +43,10 @@ router.beforeEach((to, from, next) => {
 /**
  * 根据权限生成路由
  */
-function generateRoute() {
+function generateRoute(): Array<RouteRecordRaw> {
   const userInfo: any = store.state.userInfos.userInfos
   const asyncRoute = dynamicRoutes
-  addDynamicRoute(comparePermission(userInfo.roles, asyncRoute))
+  return comparePermission(userInfo.roles, asyncRoute)
 }
 
 /**
@@ -103,12 +103,22 @@ function hasPermission(roles: Array<string>, route: RouteRecordRaw): boolean {
  * 添加路由到路由表中
  * @param routes
  */
-function addDynamicRoute(routes: Array<RouteRecordRaw>) {
-  debugger
-  routes.forEach((route) => {
+function addDynamicRoute() {
+  generateRoute().forEach((route) => {
     router.addRoute(route)
   })
-  console.log(router.options.routes)
+  // 将路由表保存到vuex中
+  store.commit('system/setRouteList', [...router.options.routes, ...routes])
+}
+
+/**
+ * 删除路由
+ */
+export function resetRoute() {
+  generateRoute().forEach((route) => {
+    const routeName = route.name
+    router.hasRoute(routeName) && router.removeRoute(routeName)
+  })
 }
 
 export default router

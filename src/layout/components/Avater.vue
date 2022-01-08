@@ -14,14 +14,25 @@
         <el-dropdown-item>Action 1</el-dropdown-item>
         <el-dropdown-item>Action 2</el-dropdown-item>
         <el-dropdown-item>Action 3</el-dropdown-item>
-        <el-dropdown-item disabled>Action 4</el-dropdown-item>
-        <el-dropdown-item divided>Action 5</el-dropdown-item>
+        <el-dropdown-item>Action 4</el-dropdown-item>
+        <el-dropdown-item divided @click="logout">登 出</el-dropdown-item>
       </el-dropdown-menu>
     </template>
   </el-dropdown>
 </template>
 
-<script setup></script>
+<script setup lang="ts">
+  import { Local, Session } from '@/utils/storage'
+  import { useRouter } from 'vue-router'
+
+  const router = useRouter()
+
+  const logout = () => {
+    Session.clear()
+    Local.clear()
+    router.replace('/login')
+  }
+</script>
 
 <style lang="scss" scoped>
   .dropdown {

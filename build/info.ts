@@ -7,7 +7,7 @@ import boxen, { type Options as BoxenOptions } from "boxen";
 dayjs.extend(duration);
 
 const welcomeMessage = gradientString("cyan", "magenta").multiline(
-  `您好! 这里是 gin-admin-frontend 项目\n对应的 golang 后端仓库如下\nhttps://pure-admin.github.io/pure-admin-doc`
+  `您好! 这里是 gin-admin-frontend 项目\n对应的 golang 后端仓库如下\nhttps://pure-admin.github.io/pure-admin-doc\n项目是基于pure-admin进行的二开，感谢pure-admin提供的开源支持`
 );
 
 const boxenOptions: BoxenOptions = {
